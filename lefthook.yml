@@ -1,0 +1,25 @@
+pre-push:
+  parallel: true
+  jobs:
+    - run: yarn eslint {staged_files}
+      glob: '*.{ts,tsx,js,jsx}'
+
+    - run: yarn stylelint {staged_files}
+      glob: '*.{css}'
+
+pre-commit:
+  parallel: true
+  jobs:
+    - run: yarn eslint {staged_files}
+      glob: '*.{ts,tsx,js,jsx}'
+
+    - run: yarn stylelint {staged_files}
+      glob: '*.{css}'
+
+lint-all:
+  parallel: true
+  commands:
+    eslint:
+      run: yarn eslint "./src/**/*.{ts,tsx,js,jsx}"
+    stylelint:
+      run: yarn stylelint "./src/**/*.css"
