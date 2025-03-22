@@ -20,11 +20,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22.x'
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn
 
   eslint:
     needs: dependencies
@@ -36,8 +36,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '
           cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
 
       - name: Run ESLint
         run: yarn lint:eslint
@@ -52,8 +55,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22.x'
           cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
 
       - name: Run Stylelint
         run: yarn lint:stylelint
@@ -68,8 +74,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22.x'
           cache: 'yarn'
+      
+      - name: Install dependencies
+        run: yarn
 
       - name: Run unit tests
         run: yarn test:unit
@@ -84,8 +93,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22.x'
           cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
 
       - name: Build project
         run: yarn build
