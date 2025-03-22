@@ -53,5 +53,6 @@
       "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test): .* \\[((AJ))-\\d+\\]$",
       "errorMessage": "Invalid commit message format. Correct format:\nbuild|chore|ci|docs|feat|fix|perf|refactor|revert|style|test: commit message text [AJ-123]"
     }
-  }
+  },
+  "packageManager": "yarn@4.5.3"
 }
