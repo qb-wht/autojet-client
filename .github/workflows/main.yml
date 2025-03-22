@@ -14,69 +14,78 @@ jobs:
   dependencies:
     runs-on: ubuntu-latest
     steps:
-      - uses: checkout@v4
-      - name: Setup
-      - uses: setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
-      - name: Dependencies install
+          cache: yarn
+
+      - name: Install dependencies
         run: yarn install
 
   eslint:
     needs: dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: checkout@v4
-      - name: Setup
-      - uses: setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
-      - name: Eslint
+          cache: yarn
+
+      - name: Run ESLint
         run: yarn lint:eslint
 
   stylelint:
     needs: dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: checkout@v4
-      - name: Setup
-      - uses: setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
-      - name: Stylelint
+          cache: yarn
+
+      - name: Run Stylelint
         run: yarn lint:stylelint
 
   unit:
     needs: dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: checkout@v4
-      - name: Setup
-      - uses: setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
-      - name: Unit
-        run: yarn test:unit
+          cache: yarn
 
-  # e2e:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: e2e
-  #       run: yarn playwright test
+      - name: Run unit tests
+        run: yarn test:unit
 
   build:
     needs: dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: checkout@v4
-      - name: Setup
-      - uses: setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
-      - name: Build
+          cache: yarn
+
+      - name: Build project
         run: yarn build
