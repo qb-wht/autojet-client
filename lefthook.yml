@@ -16,6 +16,11 @@ pre-commit:
     - run: yarn stylelint {staged_files}
       glob: '*.{css}'
 
+commit-msg:
+  commands:
+    commit-message-validator:
+      run: yarn commit-message-validator
+
 lint-all:
   parallel: true
   commands:
