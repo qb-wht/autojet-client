@@ -7,6 +7,7 @@
     "start:dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "test": "vitest ./src",
     "install:refresh": "bash ./.scripts/install-refresh.sh",
     "cli": "ts-node -P ./tsconfig.build.json ./.scripts/cli/index.ts"
   },
@@ -17,15 +18,20 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
+    "@playwright/test": "^1.51.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^22.12.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/yargs": "^17.0.33",
+    "@vitejs/plugin-react": "^4.3.4",
     "commit-message-validator": "^1.0.2",
     "eslint": "^9.21.0",
     "eslint-config-next": "^15.2.1",
     "hygen": "^6.2.11",
+    "jsdom": "^26.0.0",
     "lefthook": "^1.11.3",
     "lucide-react": "^0.483.0",
     "prettier": "^3.5.3",
@@ -33,6 +39,8 @@
     "stylelint-config-standard": "^37.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.9",
     "yargs": "^17.7.2"
   },
   "config": {
