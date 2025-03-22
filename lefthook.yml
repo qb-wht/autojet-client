@@ -1,17 +1,18 @@
 pre-push:
   parallel: true
   jobs:
-    - run: yarn eslint {staged_files}
-      glob: '*.{ts,tsx,js,jsx}'
-
-    - run: yarn stylelint {staged_files}
-      glob: '*.{css}'
+    - run: yarn lint:eslint
+    - run: yarn lint:prettier
+    - run: yarn lint:stylelint
 
 pre-commit:
   parallel: true
   jobs:
     - run: yarn eslint {staged_files}
       glob: '*.{ts,tsx,js,jsx}'
+
+    - run: yarn prettier --check {staged_files}
+      glob: '*.{ts,tsx,js,jsx,css}'
 
     - run: yarn stylelint {staged_files}
       glob: '*.{css}'
@@ -21,10 +22,9 @@ commit-msg:
     commit-message-validator:
       run: yarn commit-message-validator
 
-lint-all:
+all:
   parallel: true
-  commands:
-    eslint:
-      run: yarn eslint "./src/**/*.{ts,tsx,js,jsx}"
-    stylelint:
-      run: yarn stylelint "./src/**/*.css"
+  jobs:
+    - run: yarn lint:eslint
+    - run: yarn lint:prettier
+    - run: yarn lint:stylelint

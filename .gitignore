@@ -41,6 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 # Playwright
-e2e
 e2e-report
 e2e-result

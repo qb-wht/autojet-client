@@ -1,0 +1,82 @@
+name: wf
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+      - uses: checkout@v4
+      - uses: setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+      - name: Dependencies install
+        run: yarn install
+
+  eslint:
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+      - uses: checkout@v4
+      - uses: setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+      - name: Eslint
+        run: yarn lint:eslint
+
+  stylelint:
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+      - uses: checkout@v4
+      - uses: setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+      - name: Stylelint
+        run: yarn lint:stylelint
+
+  unit:
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+      - uses: checkout@v4
+      - uses: setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+      - name: Unit
+        run: yarn test:unit
+
+  # e2e:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: e2e
+  #       run: yarn playwright test
+
+  build:
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+      - uses: checkout@v4
+      - uses: setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+      - name: Build
+        run: yarn build

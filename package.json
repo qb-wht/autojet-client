@@ -1,13 +1,18 @@
 {
   "name": "autojet-client",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "Dmitry Bazhaev <qb.wheatley@gmail.com>",
   "description": "Autojet project description",
   "scripts": {
     "start:dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "test": "vitest ./src",
+    "test:unit": "vitest ./src",
+    "test:e2e": "playwright test",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier --check .",
+    "lint:stylelint": "stylelint **/*.css",
+    "lint:all": "lefthook run all",
     "install:refresh": "bash ./.scripts/install-refresh.sh",
     "cli": "ts-node -P ./tsconfig.build.json ./.scripts/cli/index.ts"
   },
